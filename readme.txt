@@ -24,4 +24,4 @@ as the next rate of change.
 
 See diagram1.png for visual explanation.
 
-This was a result of a thought I had 2 years ago, and I have came up with this purely on my own. Deniz Cakiroglu 7/21/2020
+This was a result of a thought I had 2 years ago, and I have come up with this purely on my own. Deniz Cakiroglu 7/21/2020
