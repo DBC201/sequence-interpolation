@@ -1,3 +1,5 @@
+This program predicts the next element of a given sequence of numbers.
+
 How the Program Works
 
 An example sequence: 3 9 27 81
