@@ -20,11 +20,10 @@ class Layer:
 
 
 def same_elements(numbers): # checks if a given list contains the same elements
-    prev = numbers[0]
-    for i in numbers:
-        if prev != i:
-            return False
-    return True
+    if len(set(numbers)) == 1:
+        return True
+    else:
+        return False
 
 
 def return_layer(sequence, op): # returns a bottom layer
