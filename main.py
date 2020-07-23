@@ -72,7 +72,6 @@ def return_possibilities(bottom_layers, file = None):  # prints all possibilitie
 
 
 if __name__ == "__main__":
-    print(same_elements([]))
     numbers = []
     file_name = input("Enter file name:")
     seperator = input("Enter seperator:")
