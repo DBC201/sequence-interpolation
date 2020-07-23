@@ -20,7 +20,7 @@ class Layer:
 
 
 def same_elements(numbers): # checks if a given list contains the same elements
-    if len(set(numbers)) == 1:
+    if len(set(numbers)) <= 1:
         return True
     else:
         return False
@@ -72,6 +72,7 @@ def return_possibilities(bottom_layers, file = None):  # prints all possibilitie
 
 
 if __name__ == "__main__":
+    print(same_elements([]))
     numbers = []
     file_name = input("Enter file name:")
     seperator = input("Enter seperator:")
