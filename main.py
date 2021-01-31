@@ -83,6 +83,7 @@ if __name__ == "__main__":
     bottom_layers = []
     populate_bottom_layers(bottom_layers, numbers)
     possible_numbers = return_possibilities(bottom_layers)
+    possible_numbers = list(set(possible_numbers))
     possible_numbers.sort()
     number_str = str(numbers).strip('[]').replace(", ", ' ') + ' -> '
     if save_file:
