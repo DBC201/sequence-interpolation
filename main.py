@@ -1,3 +1,5 @@
+import matplotlib.pyplot as plt
+
 class Layer:
     def __init__(self, sequence, operation=None, previous=None):
         self.sequence = sequence
@@ -54,28 +56,22 @@ def populate_bottom_layers(layers, sequence, operation='', previous_layer=None):
         sequence, "multiplication"), "multiplication", layer_object)
 
 
-def return_possibilities(bottom_layers, file = None):  # prints all possibilities and returns a list of them
+def return_possibilities(bottom_layers):  # prints all possibilities and returns a list of them
     poss_numbers = []
     for layer in bottom_layers:
         value = layer.return_last_value()
-        while layer.previous != None:
+        while layer.previous is not None:
             value = layer.previous.guess_value(value, layer.operation)
             layer = layer.previous
-        output = ' '.join(map(str, layer.sequence))
-        output += ' -> ' + str(value)
-        if file:
-            file.write(output + '\n')
-        else:
-            print(output)
         poss_numbers.append(value)
     return poss_numbers
 
 
 if __name__ == "__main__":
     numbers = []
-    file_name = input("Enter file name:")
-    seperator = input("Enter seperator:")
-    save_file = input("Enter a file name to save results, press enter to skip:")
+    file_name = "input.txt" # input("Enter file name:")
+    seperator = ' ' # input("Enter seperator:")
+    save_file = "output.txt" # input("Enter a file name to save results, press enter to skip:")
     if seperator == '\\n':
         seperator = f'\n'
     with open(file_name, 'r') as file:
@@ -86,10 +82,19 @@ if __name__ == "__main__":
             numbers = list(map(int, raw_file))
     bottom_layers = []
     populate_bottom_layers(bottom_layers, numbers)
+    possible_numbers = return_possibilities(bottom_layers)
+    possible_numbers.sort()
+    number_str = str(numbers).strip('[]').replace(", ", ' ') + ' -> '
     if save_file:
         with open(save_file, 'w') as file:
-            file.write("All Calculated Possibilities\n") 
-            possible_numbers = return_possibilities(bottom_layers, file)
+            file.write("All Calculated Possibilities\n")
+            for p in possible_numbers:
+                file.write(number_str+str(p)+'\n')
     else:
         print("All Calculated Possibilities")
-        possible_numbers = return_possibilities(bottom_layers)
+        for p in possible_numbers:
+            print(number_str+str(p))
+    x_axis = [i for i in range(len(possible_numbers))]
+    y_axis = possible_numbers
+    plt.plot(x_axis, y_axis)
+    plt.show()
